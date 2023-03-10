@@ -1,4 +1,5 @@
 const { connection } = require("../config/mysql-config");
+const { convertQueryStr } = require("../utils/convertQuery");
 
 const getAllCategory = (req, result) => {
   if (err) {
@@ -10,7 +11,7 @@ const getAllCategory = (req, result) => {
 
 const getCategory = (req, res) => {
   const id = req.params.id;
-  connection.query(`SELECT * FROM caregory WHERE id=${id}`, (err, result) => {
+  connection.query(`SELECT * FROM category WHERE id=${id}`, (err, result) => {
     if (err) {
       res.status(400).json({ message: err.message });
       return;
@@ -21,9 +22,7 @@ const getCategory = (req, res) => {
   });
 };
 const createCategory = (req, res) => {
-  const body = req.body;
-  const keys = Object.keys(body); // keys:["name", "ovog"]
-  const uusgegch = keys.map((key) => `${key}='${body[key]}'`).join();
+  const uusgegch = convertQueryStr(req.body);
   connection.query(
     `INSERT INTO category VALUES(${uusgegch})`,
     (err, result) => {
@@ -40,10 +39,10 @@ const createCategory = (req, res) => {
 
 const updateCategory = (req, res) => {
   const id = req.params.id;
-  const body = req.body;
 
-  const keys = Object.keys(body);
-  const huvsaigch = keys.map((key) => `${key}='${body[key]}'`).join();
+  // //  update hiihdee huvisagchaar utgaa damjuulan objectees array bolgon map-aar guilgej bg heseg
+  // keys:["name", "ovog"]
+  const huvsaigch = convertQueryStr(req.body);
   connection.query(
     `UPDATE category SET ${huvsaigch} WHERE id=${id}`,
     (err, result) => {
@@ -57,7 +56,7 @@ const updateCategory = (req, res) => {
     }
   );
 };
-
+// const id = req.params.id;
 const deleteCategory = (req, res) => {
   const id = req.params.id;
   connection.query(`DELETE category WHERE id=${id}`, (err, result) => {

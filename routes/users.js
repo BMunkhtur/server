@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
-const { getAllUsers } = require("../controllers/users");
+const { getAllUsers, createUser, getUser } = require("../controllers/users");
 
 const router = Router();
 
@@ -13,7 +13,6 @@ router.post("/signin", (req, res) => {
   if (!findUser) {
     res.status(401).json({ message: "Ийм хэрэглэгч олдсонгүй" });
   }
-
   const isCheck = bcrypt.compareSync(password, findUser.password);
   if (isCheck) {
     res.status(200).json({ message: "амжилттай нэвтэрлэлээ", user: findUser });
@@ -23,7 +22,7 @@ router.post("/signin", (req, res) => {
       .json({ message: "имэйл эсвэл нууц үг буруу байна", user: null });
   }
 });
-
+router.post("/signup", createUser);
 router.get("/", getAllUsers);
-
+router.get("/:id", getUser);
 module.exports = router;

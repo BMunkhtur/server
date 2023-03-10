@@ -1,19 +1,18 @@
 {
   "category": [
-    { "title": "Beaches", "imgURL": "./img/beach.png", "cat_id": 1 },
-    { "title": "Deserts", "imgURL": "./img/deserts.png", "cat_id": 2 },
-    { "title": "Mountains", "imgURL": "./img/mountain.png", "cat_id": 3 },
-    { "title": "Iconic Cities", "imgURL": "./img/icons.png", "cat_id": 4 },
-    { "title": "Houseboats", "imgURL": "./img/house.png", "cat_id": 5 },
-    { "title": "Country side", "imgURL": "./img/country.png", "cat_id": 6 },
-    { "title": "Camping", "imgURL": "./img/camping.png", "cat_id": 7 },
-    { "title": "Castles", "imgURL": "./img/castles.png", "cat_id": 8 },
-    { "title": "Skiing", "imgURL": "./img/skiing.png", "cat_id": 9 },
-    { "title": "Tropical", "imgURL": "./img/tropical.png", "cat_id": 10 },
+    { "title": "Beaches", "imgURL": "./img/beach.png" },
+    { "title": "Deserts", "imgURL": "./img/deserts.png" },
+    { "title": "Mountains", "imgURL": "./img/mountain.png" },
+    { "title": "Iconic Cities", "imgURL": "./img/icons.png" },
+    { "title": "Houseboats", "imgURL": "./img/house.png" },
+    { "title": "Country side", "imgURL": "./img/country.png" },
+    { "title": "Camping", "imgURL": "./img/camping.png" },
+    { "title": "Castles", "imgURL": "./img/castles.png" },
+    { "title": "Skiing", "imgURL": "./img/skiing.png" },
+    { "title": "Tropical", "imgURL": "./img/tropical.png" },
     {
       "title": "asiatravel",
-      "imgURL": "imageURL",
-      "cat_id": 11
+      "imgURL": "imageURL"
     }
   ]
 }

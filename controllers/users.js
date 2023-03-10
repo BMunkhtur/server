@@ -1,4 +1,6 @@
-const connection = require("../config/mysql-config");
+const { connection } = require("../config/mysql-config");
+const { convertQueryStr } = require("../utils/convertQuery");
+const bcrypt = require("bcrypt");
 
 const getAllUsers = (req, res) => {
   connection.query(`SELECT * FROM  users`, (err, result) => {
@@ -12,6 +14,7 @@ const getAllUsers = (req, res) => {
       .json({ message: "azure server huselt amjilttai", data: result });
   });
 };
+
 const getUser = (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM users WHERE id=?`;
@@ -22,16 +25,17 @@ const getUser = (req, res) => {
     }
     res.status(200).json({
       message: "azure server huselt amjilttai",
-      data: result[0],
+      data: result,
     });
   });
 };
 const createUser = (req, res) => {
-  const { name, email, password, phoneNumber } = req.body;
+  const { name, email, password } = req.body;
   const salted = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salted);
-
-  const query = `INSERT INTO user (id, role, name, email, password, phone_number,profileImg) VALUES(null,?,?,?,?,?)`;
+  const phoneNumber = 88888888;
+  console.log(name);
+  const query = `INSERT INTO users (id, name, email, password, phone_number, profileImg) VALUES(null,?,?,?,?,?)`;
   connection.query(
     query,
     [name, email, hashedPassword, phoneNumber, "url"],
@@ -46,11 +50,10 @@ const createUser = (req, res) => {
     }
   );
 };
+
 const updateUser = (req, res) => {
   const id = req.params.id;
-  const body = req.body;
-  const keys = Object.keys(body);
-  const huvsaigch = keys.map((key) => `${key}='${body[key]}'`).join();
+  const huvsaigch = convertQueryStr(req.body);
 
   connection.query(
     `UPDATE users SET ${huvsaigch} WHERE id='${id}'`,

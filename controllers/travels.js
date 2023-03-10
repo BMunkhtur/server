@@ -2,6 +2,7 @@ const { Router } = require("express");
 
 const router = Router();
 const { connection } = require("../config/mysql-config");
+const { convertQueryStr } = require("../utils/convertQuery");
 
 const getAllTravel = (req, res) => {
   connection.query(`SELECT * FROM travels`, (err, result) => {
@@ -37,10 +38,7 @@ const createTravel = (req, res) => {
 
 const updateTravel = (req, res) => {
   const id = req.params.id;
-  const body = req.body;
-
-  const keys = Object.keys(body);
-  const huvsaigch = keys.map((key) => `${key}='${body[key]}'`).join();
+  const huvsaigch = convertQueryStr(req.body);
   connection.query(
     `UPDATE travels SET ${huvsaigch} WHERE id=${id}`,
     (err, result) => {
