@@ -49,8 +49,7 @@ const createUser = (req, res) => {
 const updateUser = (req, res) => {
   const id = req.params.id;
   const body = req.body;
-
-  const keys = Object.keys(body); // keys:["name", "ovog"]
+  const keys = Object.keys(body);
   const huvsaigch = keys.map((key) => `${key}='${body[key]}'`).join();
 
   connection.query(

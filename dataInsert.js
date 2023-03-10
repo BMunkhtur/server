@@ -3,35 +3,7 @@ const fs = require("fs");
 
 console.log("Working");
 
-// const insertIntoUser = (users, data) => {
-//   //   return `INSERT INTO  users (id, name, email, password, role) VALUES ${data};`;
-//   connection.query(
-//     `INSERT INTO users (id, name,  password, email,role) VALUES ${data};`,
-//     (err, res) => {
-//       if (err) {
-//         console.log("EROR-----", err);
-//         return;
-//       }
-//       console.log("Success", res);
-//     }
-//   );
-// };
-
-// const content = fs.readFileSync("./data/users.json", "UTF8");
-
-// const datas = JSON.parse(content).users;
-
-// const insertData = datas
-//   .map(
-//     (data) =>
-//       `(null, "${data.name}", "${data.password}", "${data.email}", "USER")`
-//   )
-//   .join();
-
-// insertIntoUser("users", insertData);
-
 const insertTravel = (travels, data) => {
-  //   return `INSERT INTO  users (id, name, email, password, role) VALUES ${data};`;
   connection.query(
     `INSERT INTO travels (id,cat_id, title, images, category,price,location,day ) VALUES ${data};`,
     (err, res) => {
@@ -57,28 +29,3 @@ const insertTravelData = traveldatas
 
 insertTravel("travels", insertTravelData);
 console.log(insertTravelData);
-
-// const insertCategory = (category, data) => {
-//   //   return `INSERT INTO  users (id, name, email, password, role) VALUES ${data};`;
-//   connection.query(
-//     `INSERT INTO category (id,title, image, cat_id ) VALUES ${data};`,
-//     (err, res) => {
-//       if (err) {
-//         console.log("EROR-----", err);
-//         return;
-//       }
-//       console.log("Success", res);
-//     }
-//   );
-// };
-
-// const contentCategory = fs.readFileSync("./data/category.json", "utf-8");
-
-// const categorydatas = JSON.parse(contentCategory).category;
-
-// const insertCategoryData = categorydatas
-//   .map((data) => `(null, "${data.title}", "${data.imgURL}",${data.cat_id})`)
-//   .join();
-
-// insertCategory("category", insertCategoryData);
-// console.log(insertCategoryData);

@@ -24,11 +24,6 @@ router.post("/signin", (req, res) => {
   }
 });
 
-// router.post("/signup", createUser);
-
 router.get("/", getAllUsers);
-// router.get("/:id", getUser);
-// router.put("/:id", updateUser);
-// router.delete("/:id", deleteUser);
 
 module.exports = router;

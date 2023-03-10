@@ -11,7 +11,6 @@ const wishlistRoute = require("./routes/wishlist");
 const port = 8010;
 const server = express();
 
-// middlewares
 server.use(cors());
 server.use(express.json());
 
