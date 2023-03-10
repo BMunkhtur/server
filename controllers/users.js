@@ -12,7 +12,6 @@ const getAllUsers = (req, res) => {
       .json({ message: "azure server huselt amjilttai", data: result });
   });
 };
-
 const getUser = (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM users WHERE id=?`;
@@ -28,10 +27,6 @@ const getUser = (req, res) => {
   });
 };
 const createUser = (req, res) => {
-  // const body = req.body;
-  // const keys = Object.keys(body); // keys:["name", "ovog"]
-  // const uusgegch = keys.map((key) => `${key}='${body[key]}'`).join();
-
   const { name, email, password, phoneNumber } = req.body;
   const salted = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salted);
@@ -51,11 +46,10 @@ const createUser = (req, res) => {
     }
   );
 };
-
 const updateUser = (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  // //  update hiihdee huvisagchaar utgaa damjuulan objectees array bolgon map-aar guilgej bg heseg
+
   const keys = Object.keys(body); // keys:["name", "ovog"]
   const huvsaigch = keys.map((key) => `${key}='${body[key]}'`).join();
 

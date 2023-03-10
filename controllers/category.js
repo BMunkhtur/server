@@ -41,8 +41,8 @@ const createCategory = (req, res) => {
 const updateCategory = (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  // //  update hiihdee huvisagchaar utgaa damjuulan objectees array bolgon map-aar guilgej bg heseg
-  const keys = Object.keys(body); // keys:["name", "ovog"]
+
+  const keys = Object.keys(body);
   const huvsaigch = keys.map((key) => `${key}='${body[key]}'`).join();
   connection.query(
     `UPDATE category SET ${huvsaigch} WHERE id=${id}`,
@@ -57,7 +57,7 @@ const updateCategory = (req, res) => {
     }
   );
 };
-// const id = req.params.id;
+
 const deleteCategory = (req, res) => {
   const id = req.params.id;
   connection.query(`DELETE category WHERE id=${id}`, (err, result) => {
